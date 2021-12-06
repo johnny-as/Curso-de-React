@@ -1,16 +1,18 @@
 let employeesPromise = fetch('http://localhost:3000/employees');
 //
 
-employeesPromise.then(resp => {
-  resp.json().then(employees => {
+employeesPromise.then((resp) => {
+  resp.json().then((employees) => {
     let table = renderTable(employees);
-    document.getElementById('app').innerHTML = table;
+    document.getElementById("app").innerHTML = table;
+    console.log(employees);
   });
 });
 
 function renderTable(employees) {
-  employees.map(employee => {
+  let rows = employees.map((employee) => {
     return `<tr><td>${employee.id}</td><td>${employee.name}</td></tr>`;
   });
   return `<table>${rows.join('')}</table>`;
 }
+
